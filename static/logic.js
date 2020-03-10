@@ -8,16 +8,21 @@ d3.json(url).then(function (data) {
 
     var subjectFilter = d3.select("#selPlayer")
     subjectFilter.selectAll("option").remove();
+    var nameList = []
 
     data.forEach(item => {
         var fullName = `${item.lastname}, ${item.firstname} `;
         var row = subjectFilter.append("option")
-        var nameList=[]
-        row.append("option").text(fullName).attr("value", item.id);
+        if (nameList.includes(fullName)) { console.log("Name exists") } else {
+            nameList.push(fullName)
+            row.append("option").text(fullName).attr("value", item.id);
+            console.log(fullName, item.id)
+        }
+
     })
-
+    console.log(nameList)
     //update chart on dropdown change
-
+    var id = 8448208
     //eventListener
     d3.selectAll("#selPlayer").on("change", selection);
     function selection() {
@@ -29,7 +34,7 @@ d3.json(url).then(function (data) {
     selection()
         ;
 
-    var selectedid = 8448000;
+    var selectedid = id;
     var results = data.filter(function (item) {
         return item.id == selectedid;
 
