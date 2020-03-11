@@ -42,7 +42,7 @@ def getcurrent_scorers_data():
     # Establish DB connection
     conn = engine.connect()
     try:
-        data = pd.read_sql("SELECT * FROM top56_GL_data ", conn)
+        data = pd.read_sql("SELECT * FROM top56_scorers_GL_data ", conn)
         print("Connected")
         return data.to_json(orient='records')
     except Exception as e:
@@ -55,7 +55,7 @@ def gethistoric_data():
     # Establish DB connection
     conn = engine.connect()
     try:
-        data = pd.read_sql("SELECT * FROM historic_data ", conn)
+        data = pd.read_sql("SELECT * FROM hr_historical_data ", conn)
         return data.to_json(orient='records')
     except Exception as e:
         print(e)
