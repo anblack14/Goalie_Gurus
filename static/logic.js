@@ -83,10 +83,15 @@ d3.json(url).then(function (data) {
             var trace2 = {
                 x: x2,
                 y: y2,
-                type: 'scatter',
+                // type: 'scatter',
                 name: "Wayne Gretzky Record",
-                marker: { size: 6 },
-                text: ["RECORD"]
+                marker: { size: 6, color: "red" },
+                text: ["RECORD"],
+                mode: 'lines',
+                line: {
+                    dash: 'dot',
+                    width: 4
+                }
 
             }
 
@@ -169,8 +174,15 @@ d3.json(url).then(function (data) {
         type: 'scatter',
         name: "Wayne Gretzky Record",
         marker: { size: 6 },
-        text: ["RECORD"]
-
+        text: ["RECORD"],
+        name: "Wayne Gretzky Record",
+        marker: { size: 6, color: "red" },
+        text: ["RECORD"],
+        mode: 'lines',
+        line: {
+            dash: 'dot',
+            width: 4
+        }
     }
 
 
