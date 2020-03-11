@@ -101,7 +101,9 @@ d3.json(url).then(function (data) {
             var layout = {
                 xaxis: {
                     title: "Games Played",
-                    range: [1, 2000]
+                    range: [1, 2000],
+                    showline: true,
+                    showgrid: false,
                 },
                 yaxis: {
                     title: "Career Goals",
