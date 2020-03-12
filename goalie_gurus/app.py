@@ -1,5 +1,5 @@
 import pandas as pd
-#import MySQLdb
+# import MySQLdb
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
@@ -17,16 +17,17 @@ if 'IS_HEROKU' in os.environ:
 
 
 if is_heroku == False:
-    from config import db_endpoint, db_port, db_username, db_password, db_name
+    from config import remote_db_endpoint, remote_db_port, remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_gwsis_dbname
 else:
-    db_endpoint = os.environ.get('remote_db_endpoint')
-    db_port = os.environ.get('remote_db_port')
-    db_username = os.environ.get('remote_gwsis_dbuser')
-    db_password = os.environ.get('remote_gwsis_dbpwd')
-    db_name = os.environ.get('remote_db_name')
+    remote_db_endpoint = os.environ.get('remote_db_endpoint')
+    remote_db_port = os.environ.get('remote_db_port')
+    remote_gwsis_dbuser = os.environ.get('remote_gwsis_dbuser')
+    remote_gwsis_dbpwd = os.environ.get('remote_gwsis_dbpwd')
+    remote_gwsis_dbname = os.environ.get('remote_gwsis_dbname')
+
 
 engine = create_engine(
-    f"mysql+mysqldb://{db_username}:{db_password}@{db_endpoint}:{db_port}/{db_name}")
+    f"mysql+mysqldb://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{remote_db_endpoint}:{remote_db_port}/{remote_gwsis_dbname}")
 conn = engine.connect()
 
 # Initialize Flask application
