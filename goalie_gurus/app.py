@@ -19,12 +19,11 @@ if 'IS_HEROKU' in os.environ:
 if is_heroku == False:
     from config import db_endpoint, db_port, db_username, db_password, db_name
 else:
-    db_endpoint = os.environ.get('db_endpoint')
-    db_port = os.environ.get('db_port')
-    db_username = os.environ.get('db_username')
-    db_password = os.environ.get('db_password')
-    db_name = os.environ.get('db_name')
-
+    db_endpoint = os.environ.get('remote_db_endpoint')
+    db_port = os.environ.get('remote_db_port')
+    db_username = os.environ.get('remote_gwsis_dbuser')
+    db_password = os.environ.get('remote_gwsis_dbpwd')
+    db_name = os.environ.get('remote_db_name')
 
 engine = create_engine(
     f"mysql+mysqldb://{db_username}:{db_password}@{db_endpoint}:{db_port}/{db_name}")
