@@ -1,11 +1,14 @@
 import pandas as pd
-import MySQLdb
+#import MySQLdb
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
 import sqlalchemy
 from flask import Flask, request, render_template
 import os
+
+import pymysql 
+pymysql.install_as_MySQLdb
 
 # Heroku check
 is_heroku = False
