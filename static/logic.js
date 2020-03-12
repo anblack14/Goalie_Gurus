@@ -215,9 +215,6 @@ d3.json(url).then(function (data) {
 //chart -2
 
 var url = "/api/data/historic_data"
-d3.json(url).then(function (data) {
-
-});
 
 d3.json(url).then(function (data) {
 
@@ -228,9 +225,9 @@ d3.json(url).then(function (data) {
     var rank = []
 
     for (i = 0; i < data.length; i++) {
-        x.push(data[i].Year);
-        y.push(data[i].Goals);
-        goals.push(data[i].Goals);
+        x.push(data[i].Season);
+        y.push(data[i].Goals_Scored);
+        goals.push(data[i].Goals_Scored);
         names.push(data[i].Player);
     }
 
@@ -241,7 +238,7 @@ d3.json(url).then(function (data) {
         text: names,
         mode: 'markers',
         marker: {
-            color: x,
+            color: y,
             colorscale: 'Bluered',
             // size: goals,
         },
@@ -260,7 +257,7 @@ d3.json(url).then(function (data) {
 
     layout = {
         title: '<b>NHL Scoring Statistics</b><br>use dropdown to change statistic',
-        xaxis: { title: 'Year' },
+        xaxis: { title: '' },
         yaxis: {
             title: 'Goals', range: [0, Math.max(y
             )]
@@ -317,7 +314,7 @@ d3.json(url).then(function (data) {
 
     myPlot.on('plotly_hover', function (data) {
         var infotext = data.points.map(function (d) {
-            return (d.text + ': Year= ' + d.x + ', Goals= ' + d.y.toPrecision(3));
+            return (d.text + ': Starting Season= ' + d.x + ', Goals= ' + d.y.toPrecision(3));
         });
 
         hoverInfo.innerHTML = infotext.join('<br/>');
@@ -330,7 +327,7 @@ d3.json(url).then(function (data) {
     myPlot.on('plotly_click', function (data) {
         var pts = '';
         for (var i = 0; i < data.points.length; i++) {
-            annotate_text = 'Year = ' + data.points[i].x +
+            annotate_text = 'Starting Season = ' + data.points[i].x +
                 ' Goals = ' + data.points[i].y.toPrecision(4);
 
             annotation = {
@@ -342,6 +339,137 @@ d3.json(url).then(function (data) {
             annotations = self.layout.annotations || [];
             annotations.push(annotation);
             Plotly.relayout('myDiv2', { annotations: annotations })
+        }
+    });
+});
+
+//chart -3
+
+var url = "/api/data/historic_data"
+
+d3.json(url).then(function (data) {
+
+    var x = []
+    var y = []
+    var goals = []
+    var names = []
+    var rank = []
+
+    for (i = 0; i < data.length; i++) {
+        x.push(data[i].Age);
+        y.push(data[i].Goals_Scored);
+        goals.push(data[i].Goals_Scored);
+        names.push(data[i].Player);
+    }
+
+    var trace1 = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        text: names,
+        mode: 'markers',
+        marker: {
+            color: y,
+            colorscale: 'Bluered',
+            // size: goals,
+        },
+        transforms: [{
+            type: 'aggregate',
+            groups: names,
+            aggregations: [
+                { target: 'y', func: 'avg', enabled: true },
+                { target: 'x', func: '', enabled: true },
+            ]
+        }]
+    };
+    var config = { responsive: true }
+
+    var data = [trace1];
+
+    layout = {
+        title: '<b>NHL Scoring Statistics</b><br>use dropdown to change statistic',
+        xaxis: { title: '' },
+        yaxis: {
+            title: 'Goals', range: [0, Math.max(y
+            )]
+        },
+        height: 600,
+        width: 800,
+        colorscale: 'YIGnBu',
+        hovermode: 'closest',
+        updatemenus: [{
+            x: 1.15,
+            y: 1.15,
+            xref: 'paper',
+            yref: 'paper',
+            yanchor: 'top',
+            active: 0,
+            showactive: false,
+            buttons: [{
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'avg'],
+                label: 'Average goals per season'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'sum'],
+                label: 'Total career goals'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'min'],
+                label: 'Min goals/season in a career'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'max'],
+                label: 'Max goals/season in a career'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'median'],
+                label: 'Median goals in a  career'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'first'],
+                label: 'Goals in first season'
+            }, {
+                method: 'restyle',
+                args: ['transforms[0].aggregations[0].func', 'last'],
+                label: 'Goals in last season'
+            }]
+        }]
+    }
+
+    Plotly.newPlot('myDiv3', data, layout, { displayModeBar: false, responsive: true });
+
+    var myPlot = document.getElementById('myDiv3'),
+        hoverInfo = document.getElementById('hoverinfo2');
+
+
+    myPlot.on('plotly_hover', function (data) {
+        var infotext = data.points.map(function (d) {
+            return (d.text + ': Starting Season= ' + d.x + ', Goals= ' + d.y.toPrecision(3));
+        });
+
+        hoverInfo.innerHTML = infotext.join('<br/>');
+    })
+        .on('plotly_unhover', function (data) {
+            hoverInfo.innerHTML = '';
+        });
+
+    // Click function
+    myPlot.on('plotly_click', function (data) {
+        var pts = '';
+        for (var i = 0; i < data.points.length; i++) {
+            annotate_text = 'Starting Season = ' + data.points[i].x +
+                ' Goals = ' + data.points[i].y.toPrecision(4);
+
+            annotation = {
+                text: annotate_text,
+                x: data.points[i].x,
+                y: parseFloat(data.points[i].y.toPrecision(4))
+            }
+
+            annotations = self.layout.annotations || [];
+            annotations.push(annotation);
+            Plotly.relayout('myDiv3', { annotations: annotations })
         }
     });
 });

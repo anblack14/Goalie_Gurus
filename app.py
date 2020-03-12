@@ -55,7 +55,7 @@ def gethistoric_data():
     # Establish DB connection
     conn = engine.connect()
     try:
-        data = pd.read_sql("SELECT * FROM hr_historical_data ", conn)
+        data = pd.read_sql("SELECT * FROM hr_data ", conn)
         return data.to_json(orient='records')
     except Exception as e:
         print(e)
