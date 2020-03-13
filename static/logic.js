@@ -76,7 +76,7 @@ d3.json(url).then(function (data) {
                 // text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
                 marker: {
                     color: x,
-                    colorscale: 'Bluered',
+                    colorscale: 'contour',
                     // size: goals,
                 },
             };
@@ -110,7 +110,7 @@ d3.json(url).then(function (data) {
                     range: [0, 1000]
                 },
                 title: `Career Goals of ${selectedPlayer} Vs. Gretzky's Record`,
-                colorscale: 'YIGnBu',
+                colorscale: 'contour',
                 hovermode: 'closest',
                 paper_bgcolor: "rgba(0,0,0,0)",
                 plot_bgcolor: "rgba(0,0,0,0)"
@@ -168,7 +168,7 @@ d3.json(url).then(function (data) {
         // text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
         marker: {
             color: x,
-            colorscale: 'Bluered',
+            colorscale: 'contour',
             // size: goals,
         },
     };
@@ -195,14 +195,16 @@ d3.json(url).then(function (data) {
     var layout = {
         xaxis: {
             title: "Games Played",
-            range: [1, 2000]
+            range: [1, 2000],
+            showline: true,
+            showgrid: false,
         },
         yaxis: {
             title: "Career Goals",
             range: [0, 1000]
         },
         title: `Career Goals of ${selectedPlayer} Vs. Gretzky's Record`,
-        colorscale: 'YIGnBu',
+        colorscale: 'contour',
         hovermode: 'closest',
         paper_bgcolor: "rgba(0,0,0,0)",
         plot_bgcolor: "rgba(0,0,0,0)"
@@ -243,7 +245,7 @@ d3.json(url).then(function (data) {
         mode: 'markers',
         marker: {
             color: y,
-            colorscale: 'Bluered',
+            colorscale: 'Earth',
             // size: goals,
         },
         transforms: [{
@@ -261,11 +263,15 @@ d3.json(url).then(function (data) {
 
     layout = {
         title: '<b>NHL Scoring Statistics</b><br>use dropdown to change statistic',
-        xaxis: { title: '' },
+        xaxis: {
+            title: '', showline: true,
+            showgrid: false,
+        },
         yaxis: {
             title: 'Goals', range: [0, Math.max(y
             )]
         },
+
         height: 600,
         width: 800,
         colorscale: 'YIGnBu',
