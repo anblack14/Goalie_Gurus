@@ -61,6 +61,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+
+
 body {
   margin: 0;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -69,8 +71,11 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #FCFCFC;
+  background-color: rgb(236, 232, 176);
+  
 }
+.jumbotron{
+  background-color: rgb(236, 232, 176)}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;

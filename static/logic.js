@@ -19,7 +19,7 @@ d3.json(url).then(function (data) {
 
     })
     //update chart on dropdown change
-    var id = 8445000
+    var id = 8471214
     var id2 = 8447400;
     //eventListener
     d3.selectAll("#selPlayer").on("change", selection);
@@ -112,6 +112,8 @@ d3.json(url).then(function (data) {
                 title: `Career Goals of ${selectedPlayer} Vs. Gretzky's Record`,
                 colorscale: 'YIGnBu',
                 hovermode: 'closest',
+                paper_bgcolor: "rgba(0,0,0,0)",
+                plot_bgcolor: "rgba(0,0,0,0)"
             };
 
 
@@ -202,6 +204,8 @@ d3.json(url).then(function (data) {
         title: `Career Goals of ${selectedPlayer} Vs. Gretzky's Record`,
         colorscale: 'YIGnBu',
         hovermode: 'closest',
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)"
     };
 
 
@@ -266,6 +270,8 @@ d3.json(url).then(function (data) {
         width: 800,
         colorscale: 'YIGnBu',
         hovermode: 'closest',
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
         updatemenus: [{
             x: 1.15,
             y: 1.15,
