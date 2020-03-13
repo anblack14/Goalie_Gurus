@@ -2,7 +2,8 @@ console.log("Connected")
 
 //Initial chart placeholder
 
-var url = "/api/data/current_scorers_data"
+//var url = "/api/data/current_scorers_data" //DART CHANGED THIS
+var url = "/api/data/get_fake_data" //DART CHANGED THIS
 d3.json(url).then(function (data) {
     //filling the dropdown menu
 
@@ -12,8 +13,9 @@ d3.json(url).then(function (data) {
 
     data.forEach(item => {
         var fullName = `${item.lastname}, ${item.firstname} `;
-        var row = subjectFilter.append("option")
+
         if (nameList.includes(fullName)) { console.log("Name exists") } else {
+            var row = subjectFilter.append("option")
             nameList.push(fullName)
             row.append("option").text(fullName).attr("value", item.id);
             console.log(fullName, item.id)
@@ -34,7 +36,7 @@ d3.json(url).then(function (data) {
     selection()
         ;
 
-    var selectedid = id;
+    var selectedid = 8448208;
     var results = data.filter(function (item) {
         return item.id == selectedid;
 
@@ -387,5 +389,3 @@ d3.json(url).then(function (data) {
 
     console.log("Data completed")
 });
-
-
