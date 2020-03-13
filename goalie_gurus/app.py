@@ -11,6 +11,7 @@ import sqlalchemy
 from flask import Flask, request, render_template
 import os
 
+
 # Heroku check
 is_heroku = False
 if 'IS_HEROKU' in os.environ:

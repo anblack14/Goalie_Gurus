@@ -12,6 +12,8 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script type="text/javascript" src="./static/logic.js"></script>
     <link rel="stylesheet" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" href="../static/css/bootstrap.css"> -->
+
 
 
     <title>Hockey Project Worksheet</title>
@@ -66,15 +68,40 @@
 
     <div class="container">
 
-
         <div class="row">
             <div class="col">
-                <h1> Compare the top players' performance with Wayne Gretzky</h1>
-                <p>Individual Player's progress</p>
-                <select id="selPlayer"></select>
+                <iframe
+                    src='https://www.nhl.com/video/embed/memories-gretzky-pots-802nd-goal/t-277350912/c-50562703?autostart=false'
+                    width='540' height='360'></iframe>
+
 
             </div>
             <div class="col">
+                <H3> The Record</H3>
+                <p>Wayne Gretzky Bio
+                    Every superlative has been used, many strung together, to describe the otherwordly talent of Wayne
+                    Gretzky, who commonly is regarded as the greatest hockey player ever.
+                    Based purely on statistics, there is no argument -- the man is without peer, nor will he have one in
+                    the foreseeable future. He owns many records from the ranks of peewee hockey to the NHL, sitting
+                    atop every meaningful offensive category, often miles ahead of the players ranked second.</p>
+                <p> Bio Source: www.nhl.com</p>
+                <img src="../static/yellow Arrow down.png" style="width:125px;height:150px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h3> Compare top players' performance with Wayne Gretzky</h3>
+                <p>Individual Player's progress</p>
+                <select id="selPlayer"></select>
+                <hr>
+                <p>Ovechkin is considered by many as the greatest goal scorer in NHL history,[95] with what some
+                    consider a real chance at overtaking Wayne Gretzky in total career goals (894).</p>
+                <p> <img src="../static/ovechkin.png" style="float:left;width:300px;height:500;"> </p>
+
+            </div>
+            <div class="col">
+                <hr>
                 <div id="myDiv">
                     <!-- Plotly chart will be drawn inside this DIV -->
                 </div>
@@ -82,18 +109,25 @@
         </div>
         <div class="row">
             <div class="col">
-                <h1> Explore historical statistics of NHL players</h1>
-                <p>Use the dropdown menu to explore different metrics</p>
-                <H5>
-                    <div id="hoverinfo" style="margin-left:80px;">Hover test</div>
-                </H5>
-
-            </div>
-            <div class="col">
+                <hr>
                 <div id="myDiv2">
                     <!-- Plotly chart will be drawn inside this DIV -->
                 </div>
             </div>
+            <div class="col">
+                <hr>
+                <h3> Explore historical statistics of NHL players</h3>
+                <p>Use the dropdown menu to explore different metrics</p>
+
+                <img src="../static/downleft arrow.png" style="width:125px;height:150px;">
+
+
+                <H5>
+                    <div id="hoverinfo" style="margin-left:80px;"></div>
+                </H5>
+
+            </div>
+
         </div>
 
 
