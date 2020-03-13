@@ -1,4 +1,8 @@
 import pandas as pd
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 import MySQLdb
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
