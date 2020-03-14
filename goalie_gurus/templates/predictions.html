@@ -59,21 +59,6 @@
     <div class="jumbotron jumbotron-fluid ">
         <div class="container">
             <img src="../static/894 Banner 2.png" class="img-fluid" alt="Responsive image">
-            <div data-type="countup" data-id="154727" class="tickcounter"
-                style="width: 100%; position: relative; padding-bottom: 25%"><a
-                    href="//www.tickcounter.com/countup/154727/wayne-gretzky-record-unbroken-since"
-                    title="Wayne Gretzky's career goalrecord unbroken since...">Wayne Gretzky Career Goal's Record Unbroken
-                    Since...</a><a href="" title="Countup">Countup</a></div>
-            <script>
-                (function (d, s, id) {
-                    var js, pjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//www.tickcounter.com/static/js/loader.js";
-                    pjs.parentNode.insertBefore(js, pjs);
-                }(document, "script", "tickcounter-sdk"));
-            </script>
         </div>
     </div>
 
@@ -86,23 +71,7 @@
                 <p>We built a regression model based on the greatest goal scorers of all-time gamelogs.  The model focuses on goals, shots, age, and game #.  By combining these 4 inputs, we feed multiple machine learning models into each other in order to predict if and when Alex Ovechkin will catch Wayne Gretzky.  The data is updated nightly with the latest gamelogs.  Every prediction will be logged and timestamped on this page.  Come back to see how accurate the model is!</p>
             </div>
             <div class="col">
-                <table> 
-                    <tr>
-                        <th colpan="2">Notable NHL Records</th>
-                    </tr>
-                    <tr>
-                        <td>Goals Scored</td>
-                        <td>894</td>
-                    </tr>
-                    <tr>
-                        <td>Assists</td>
-                        <td>1963</td>
-                    </tr>
-                    <tr>
-                        <td>Points</td>
-                        <td>2857</td>
-                    </tr>
-                </table>
+                <table border="1" class="dataframe table table-striped">  <thead>    <tr style="text-align: right;">      <th>#</th>      <th>Date</th>      <th>Game Prediction</th>    </tr>  </thead>  <tbody>    <tr>      <td>1</td>      <td>2020-03-14</td>      <td>1460</td>    </tr>  </tbody></table>
                 </p>
             </div>
         </div>
