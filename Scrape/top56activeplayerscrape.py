@@ -177,7 +177,8 @@ def top56activeplayerscrape():
 
     #calculate cumulative goals & game ID
     df_combine['sumgoals'] = df_combine.groupby('id')['goals'].transform(pd.Series.cumsum)
-    df_combine['gameid'] = df_combine.groupby('id').cumcount() + 1   
+    df_combine['gameid'] = df_combine.groupby('id').cumcount() + 1
+    df_combine = df_combine.fillna(0)
 
     #create final table
     df_combine.to_sql(name='top56_scorers_GL_data', if_exists='replace', con=conn, chunksize=500, index=False)   
@@ -186,6 +187,7 @@ def top56activeplayerscrape():
 
     print("---SCRAPE COMPLETE---")
     return()
+
 top56activeplayerscrape()
 #Set a timer for initial deployment    
 #time.sleep(86400)
