@@ -58,6 +58,7 @@ def currseasonscrape():
     df_combine.reset_index(inplace=True, drop=True)
     df_combine['seasonid'] = df_combine.groupby('Player').cumcount() + 1   
     df_combine['Rk'] = df_combine.groupby('Season').cumcount() + 1 
+    df_combine = df_combine.fillna(0)
 
     #create final table
     df_combine.to_sql(name='hr_data', if_exists='replace', con=conn, chunksize=500, index=False)   
@@ -68,24 +69,26 @@ def currseasonscrape():
 
     return()
 
+currseasonscrape()
+
 #Set a timer for initial deployment
 # time.sleep(86400)
 
 # Set timer to run every 24 hours...timer is in seconds
 
 # counter just to count how many days it's been running
-counter = 0
+# counter = 0
 
-# Infinite loop
-while(True):
+# # Infinite loop
+# while(True):
 
-    # Call scrape function
-    currseasonscrape()
+#     # Call scrape function
+#     currseasonscrape()
 
-    # 24 hour sleep timer
-    time.sleep(86400)
+#     # 24 hour sleep timer
+#     time.sleep(86400)
 
-    # Add 1 to the counter prior to re-running the loop
-    counter += 1
+#     # Add 1 to the counter prior to re-running the loop
+#     counter += 1
 
-    print(counter)
+#     print(counter)
