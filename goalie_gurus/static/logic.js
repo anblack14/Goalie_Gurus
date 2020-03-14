@@ -355,6 +355,139 @@ d3.json(url).then(function (data) {
     });
 });
 
+//chart -3
+
+var url = "/api/data/ovdb";
+d3.json(url).then(function (data) {
+    console.log("OVDB data", data)
+
+    var x = []
+    var y = []
+
+    var goals = []
+    var rank = []
+
+    for (i = 0; i < data.length; i++) {
+        x.push(data[i].gameid);
+        y.push(data[i].sumgoals);
+        goals.push(data[i].sumgoals);
+    }
+
+
+
+    var trace1 = {
+        x: x,
+        y: y,
+        mode: 'markers',
+        type: 'scatter',
+        name: "Ovechkin",
+        // text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+        marker: {
+            color: x,
+            colorscale: 'contour',
+            // size: goals,
+        },
+    };
+
+    var trace2 = {
+        x: [500],
+        y: [950],
+        text: ['Career Goal Record'],
+        name: "Career Goal Record",
+
+        mode: 'text'
+    };
+
+    var trace3 = {
+        x: [1450],
+        y: [500],
+        text: ['Current Game'],
+        mode: 'text'
+    };
+
+    var trace4 = {
+        x: [1460],
+        y: [894],
+        text: ['Predicted Game to tie record'],
+        mode: 'text'
+    };
+
+    var data = [trace1, trace2, trace3];
+
+    var layout = {
+        xaxis: {
+            title: "Games Played",
+            range: [1, 2000],
+            showline: true,
+            showgrid: false,
+        },
+        yaxis: {
+            title: "Career Goals",
+            range: [0, 1000]
+        },
+        showlegend: false,
+        title: `Predicted Game`,
+        colorscale: 'contour',
+        hovermode: 'closest',
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+
+        shapes: [
+
+            //line vertical
+
+            {
+                type: 'line',
+                x0: 1152,
+                y0: 0,
+                x1: 1152,
+                y1: 894,
+                line: {
+                    color: 'grey',
+                    width: 3,
+                    dash: 'dot'
+                }
+            },
+
+            //Line Horizontal
+
+            {
+                type: 'line',
+                x0: 0,
+                y0: 894,
+                x1: 2000,
+                y1: 894,
+                line: {
+                    color: 'grey',
+                    width: 3,
+                    dash: 'dot'
+                }
+            },
+
+            {
+                type: 'circle',
+                xref: 'x',
+                yref: 'y',
+                x0: 1360,
+                y0: 794,
+                x1: 1560,
+                y1: 994,
+                line: {
+                    color: 'grey'
+                }
+            }
+
+
+        ]
+    };
+
+
+    Plotly.react('myDivODB', data, layout, { displayModeBar: false });
+
+
+
+})
+
 
 
 
