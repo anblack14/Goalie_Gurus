@@ -11,6 +11,9 @@ import sqlalchemy
 from flask import Flask, request, render_template
 import os
 
+# Initialize Flask application
+app = Flask(__name__)
+
 # Heroku check
 is_heroku = False
 if 'IS_HEROKU' in os.environ:
@@ -30,10 +33,6 @@ else:
 engine = create_engine(
     f"mysql+mysqldb://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{remote_db_endpoint}:{remote_db_port}/{remote_db_name}")
 conn = engine.connect()
-
-# Initialize Flask application
-app = Flask(__name__)
-
 
 # Set up your default route
 @app.route('/')
