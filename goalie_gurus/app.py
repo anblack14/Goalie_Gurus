@@ -40,6 +40,15 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+# Set up your default route
+@app.route('/api')
+def home():
+    return render_template('api.html')
+
+# Set up your default route
+@app.route('/predictions')
+def home():
+    return render_template('predictions.html')
 
 @app.route('/api/data/current_scorers_data')
 def getcurrent_scorers_data():
