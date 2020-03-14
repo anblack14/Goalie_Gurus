@@ -65,10 +65,15 @@
         <div class="row">
             <div class="col">
                 <H3> The Model</H3>
-                <p>We built a regression model based on the greatest goal scorers of all-time gamelogs.  The model focuses on goals, shots, age, and game #.  By combining these 4 inputs, we feed multiple machine learning models into each other in order to predict if and when Alex Ovechkin will catch Wayne Gretzky.  The data is updated nightly with the latest gamelogs.  Every prediction will be logged and timestamped on this page.  Come back to see how accurate the model is!</p>
+                <p>We built a regression model based on the greatest goal scorers of all-time gamelogs.  The model focuses on goals, shots, age, and game #.  By combining these 4 inputs, we feed multiple machine learning models into each other in order to predict if and when Alex Ovechkin will catch Wayne Gretzky.  The data is updated nightly with the latest gamelogs.  Every prediction will be logged and timestamped on this page.  Come back to see how accurate the model is!
+                </p>
+                <p><h5>Columns Explained</h5></p>
+                <p>Date Predicted by Model = The date the model ran and made a prediction</p>
+                <p>Record Breaking Game # = The game # in Ovechkin's career that he is predicted to break the record</p>
+                <p># of Games Until Record Broken = How many games until Ovechkin breaks the record</p>
             </div>
             <div class="col">
-                <table border="1" class="dataframe table table-striped">  <thead>    <tr style="text-align: right;">      <th>#</th>      <th>Date</th>      <th>Game Prediction</th>    </tr>  </thead>  <tbody>    <tr>      <td>1</td>      <td>2020-03-14</td>      <td>1460</td>    </tr>  </tbody></table>
+                <table border="1" class="dataframe table table-striped">  <thead>    <tr style="text-align: right;">      <th>#</th>      <th>Date Predicted by Model</th>      <th>Record Breaking Game #</th>      <th># of Games Until Record Broken</th>    </tr>  </thead>  <tbody>    <tr>      <td>1</td>      <td>2020-03-14</td>      <td>1462</td>      <td>310</td>    </tr>  </tbody></table>
                 </p>
             </div>
         </div>
