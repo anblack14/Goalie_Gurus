@@ -16,7 +16,7 @@
 
 
 
-    <title>894</title>
+    <title>Hockey Project Worksheet</title>
 
 </head>
 
@@ -40,17 +40,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./model.html">OV Model Explained</a>
+                    <a class="nav-link" href="model.html">Predictive Analysis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./career.html">OV Career Goals Projection</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">APIs</a>
+                    <a class="nav-link" href="api.html">APIs</a>
                 </li>
 
             </ul>
@@ -96,7 +92,27 @@
                     Gretzky, who commonly is regarded as the greatest hockey player ever.
                     Based purely on statistics, there is no argument -- the man is without peer, nor will he have one in
                     the foreseeable future. He owns many records from the ranks of peewee hockey to the NHL, sitting
-                    atop every meaningful offensive category, often miles ahead of the players ranked second.</p>
+                    atop every meaningful offensive category, often miles ahead of the players ranked second.
+
+                <br>
+                <table> 
+                    <tr>
+                        <th colpan="2">Notable NHL Records</th>
+                    </tr>
+                    <tr>
+                        <td>Goals Scored</td>
+                        <td>894</td>
+                    </tr>
+                    <tr>
+                        <td>Assists</td>
+                        <td>1963</td>
+                    </tr>
+                    <tr>
+                        <td>Points</td>
+                        <td>2857</td>
+                    </tr>
+                </table>
+                </p>
                 <p> Bio Source: www.nhl.com</p>
                 <img src="../static/yellow Arrow down.png" style="width:125px;height:150px;">
             </div>
@@ -107,8 +123,21 @@
                 <h3> Data Prediction</h3>
                 <p>Ovechkin's progress to breaking the record</p>
                 <hr>
-                <p>Ovechkin is considered by many as the greatest goal scorer in NHL history,[95] with what some
-                    consider a real chance at overtaking Wayne Gretzky in total career goals (894).</p>
+                <p>While Gretzky is likely to remain the greatest overall player in hockey history, one player, Alex Ovechkin,
+                     is considered by many as the greatest goal scorer in NHL history with a real chance at 
+                     overtaking Wayne Gretzky in total career goals (894).</p>
+                <p>Use the figure to the right to observe Ovechkin's progress as a goal scorer. The dotted horizontal line
+                    represents the most goals scored by any player in his career in the NHL (Wayne Gretzky's record of 894 goals).
+                    The vertical dotted line represents Alex Ovechkin's most recent game.  The colored solid line shows the career sum total goals
+                    scored for each game.
+                </p>
+                <p>Data to the right of the most recent game is a projection based on an Advanced Quantative
+                    Linear Regression Modeling algorithm which analyzes the historic perfomances of other
+                    goal scoring leaders at similar points in their careers.
+                </p>
+                <p>This chart will update regularly using our bespoke automated webscraping tool developed
+                    specifically for this purpose.
+                </p>
 
                 <p> <img src="../static/ovechkin.png" style="float:right;width:300px;height:500;"> </p>
 
@@ -134,8 +163,13 @@
                 <p>Individual Player's progress</p>
                 <select id="selPlayer"></select>
                 <hr>
-                <p>Ovechkin is considered by many as the greatest goal scorer in NHL history,[95] with what some
-                    consider a real chance at overtaking Wayne Gretzky in total career goals (894).</p>
+                <p>How great was The Great One? Use the drop down above to compare other GREAT goal-scorers
+                    to Gretzky.  The dotted curve shows Gretzky's career sum goals over time, the solid curve
+                   shows the selected player's career sum goals over time.  (Be patient, our advanced complex 
+                   computing systems take a while to perform their calculations)</p>
+
+                   <p>You may also note how players tend to score goals at a decreased rate towards the end of 
+                    their careers.</p>
 
                 <p> <img src="../static/Yellow Arrow Circle.png" style="float:left;width:125px;height:150;"> </p>
 
@@ -153,7 +187,10 @@
             <div class="col">
                 <hr>
                 <h3> Explore historical statistics of NHL players</h3>
-                <p>Use the dropdown menu to explore different metrics</p>
+                <p><i>They just don't play like they used to...</i><br>
+                    Ever wonder how the game is changing? Are players in general scoring more goals now than they used to?
+                    Are rookies entering The League more competitive now?<br>
+                    Use the dropdown menu to explore different metrics for EVERY PLAYER EVER and find out!</p>
 
                 <img src="../static/yellow Arrow down.png" style="width:125px;height:150px;">
 
