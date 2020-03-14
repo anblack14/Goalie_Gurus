@@ -62,6 +62,18 @@ def gethistoric_data():
         return render_template('error.html', error=True)
 
 
+@app.route('/api/data/ovdb')
+def getOVDB():
+    # Establish DB connection
+    conn = engine.connect()
+    try:
+        data = pd.read_sql("SELECT * FROM ovdb ", conn)
+        return data.to_json(orient='records')
+    except Exception as e:
+        print(e)
+        return render_template('error.html', error=True)
+
+
 @app.route('/api/data/player_data')
 def getplayer_data():
     # Establish DB connection
