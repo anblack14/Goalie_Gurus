@@ -51,7 +51,7 @@ def predictions():
 
 # Set up your default route
 @app.route('/goalmodel')
-def predictions():
+def goalmodel():
     return render_template('goalmodel.html')
 
 @app.route('/api/data/current_scorers_data')
