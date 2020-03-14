@@ -68,7 +68,7 @@ def hrscrape():
     return()
 
 #Set a timer for initial deployment
-time.sleep(86400)
+time.sleep(46920)
 
 # Set timer to run every 24 hours...timer is in seconds
 

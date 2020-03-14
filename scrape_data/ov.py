@@ -96,7 +96,7 @@ def ov():
     conn.close()
 
 #Set a timer for initial deployment    
-time.sleep(86400)
+time.sleep(49320)
 
     # Set timer to run every 24 hours...timer is in seconds
 

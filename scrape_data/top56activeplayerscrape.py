@@ -188,25 +188,24 @@ def top56activeplayerscrape():
     print("---SCRAPE COMPLETE---")
     return()
 
-top56activeplayerscrape()
 #Set a timer for initial deployment    
-#time.sleep(86400)
+time.sleep(48120)
 
-    # Set timer to run every 24 hours...timer is in seconds
+#    Set timer to run every 24 hours...timer is in seconds
 
-# counter just to count how many days it's been running
-# counter = 0
+#counter just to count how many days it's been running
+counter = 0
 
-# # Infinite loop
-# while(True):
+# Infinite loop
+while(True):
 
-#     # Call scrape function
-#     top56activeplayerscrape()
+    # Call scrape function
+    top56activeplayerscrape()
 
-#     # 24 hour sleep timer
-#     time.sleep(86400)
+    # 24 hour sleep timer
+    time.sleep(86400)
 
-#     # Add 1 to the counter prior to re-running the loop
-#     counter += 1
+    # Add 1 to the counter prior to re-running the loop
+    counter += 1
 
-#     print(counter)
+    print(counter)

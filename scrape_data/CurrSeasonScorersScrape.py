@@ -212,7 +212,7 @@ def currseasonscorersscrape():
 
 
 #Set a timer for initial deployment    
-time.sleep(86400)
+time.sleep(45720)
 
     # Set timer to run every 24 hours...timer is in seconds
 
