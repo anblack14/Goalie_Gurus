@@ -20,11 +20,11 @@ if 'IS_HEROKU' in os.environ:
 if is_heroku == False:
     from config import remote_db_endpoint, remote_db_port,remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_name
 else:
-    remote_db_endpoint = os.environ.get('db_endpoint')
-    remote_db_port = os.environ.get('db_port')
-    remote_gwsis_dbuser = os.environ.get('db_username')
-    remote_gwsis_dbpwd = os.environ.get('db_password')
-    remote_db_name = os.environ.get('db_name')
+    remote_db_endpoint = os.environ.get('remote_db_endpoint')
+    remote_db_port = os.environ.get('remote_db_port')
+    remote_gwsis_dbuser = os.environ.get('remote_gwsis_dbuser')
+    remote_gwsis_dbpwd = os.environ.get('remote_gwsis_dbpwd')
+    remote_db_name = os.environ.get('remote_db_name')
 
 
 engine = create_engine(
