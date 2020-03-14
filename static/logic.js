@@ -443,7 +443,7 @@ d3.json(url).then(function (data) {
                 x1: 1152,
                 y1: 894,
                 line: {
-                    color: 'red',
+                    color: 'grey',
                     width: 3,
                     dash: 'dot'
                 }
@@ -458,7 +458,7 @@ d3.json(url).then(function (data) {
                 x1: 2000,
                 y1: 894,
                 line: {
-                    color: 'red',
+                    color: 'grey',
                     width: 3,
                     dash: 'dot'
                 }
