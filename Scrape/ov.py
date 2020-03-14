@@ -3,6 +3,7 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 import pandas as pd
 import os
+from datetime import date
 
 from sqlalchemy import create_engine
 
@@ -14,6 +15,7 @@ from config import remote_db_endpoint, remote_db_port
 from config import remote_gwsis_dbname, remote_gwsis_dbuser, remote_gwsis_dbpwd
 
 def ov():
+    #gets the first model dataframe ready
     engine = create_engine(f"mysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{remote_db_endpoint}:{remote_db_port}/{remote_gwsis_dbname}")
     conn = engine.connect()
 
@@ -29,6 +31,7 @@ def ov():
 
     ovdf = skinnydf.loc[(skinnydf['id'] == 8471214)]
 
+    #createst the first model
     # Assign X (data) and y (target)
     X_shots = ovdf.drop(["sumshots","pim", "hits","bs","sumgoals","id"],axis=1)
     y_shots = ovdf["sumshots"]
@@ -53,7 +56,7 @@ def ov():
     shotpredictions_df = pd.DataFrame({"daysalive": shotpred["daysalive"],"gameid": shotpred["gameid"],"sumshots": shotpredictions}).reset_index(drop=True)
     shotpredictions_df = shotpredictions_df.round(decimals=0).astype(int)
 
-
+    #creates the second model
     X_goals = ovdf.drop(["pim", "hits","bs","sumgoals","id"],axis=1)
     y_goals = ovdf["sumgoals"]
 
@@ -78,6 +81,19 @@ def ov():
     goalspredictions_df = pd.concat([ovpredictions_df, goalspredictions_df])
 
     goalspredictions_df.to_sql(name='ovdb', if_exists='replace', con=conn, chunksize=500, index=False)   
+
+
+    #creates the predictions table 
+    predtable = pd.read_sql('SELECT * FROM predtable', con=engine)
+    today = date.today()
+    tiegame = goalspredictions_df.loc[goalspredictions_df['sumgoals'] == 894]["gameid"].values[0].astype(int)
+    predtable = predtable.append({'Date' : today , 'Game Prediction' : tiegame} , ignore_index=True)
+    predtable.to_sql(name='predtable', if_exists='replace', con=conn, chunksize=500, index=False)
+    predtable
+    predtable_html = predtable.to_html(classes="table table-striped")
+    predtable_html = predtable_html.replace('\n', '')
+
+    conn.close()
 
 #Set a timer for initial deployment    
 time.sleep(86400)

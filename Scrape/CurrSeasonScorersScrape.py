@@ -14,7 +14,6 @@ pymysql.install_as_MySQLdb()
 # Config Variables 
 from config import remote_db_endpoint, remote_db_port
 from config import remote_gwsis_dbname, remote_gwsis_dbuser, remote_gwsis_dbpwd
-from config import local_db_user, local_db_pwd, local_db_endpoint, local_db_port, local_db_name
 
 def currseasonscorersscrape():
     # Cloud MySQl database connection on AWS
@@ -210,26 +209,26 @@ def currseasonscorersscrape():
     print("---SCRAPE COMPLETE---")
     return()
 
-currseasonscorersscrape()
 
-    # Dataframe to SQL
-    
+
+#Set a timer for initial deployment    
+time.sleep(86400)
 
     # Set timer to run every 24 hours...timer is in seconds
 
-# # counter just to count how many days it's been running
-# counter = 0
+# counter just to count how many days it's been running
+counter = 0
 
-# # Infinite loop
-# while(True):
+# Infinite loop
+while(True):
 
-#     # Call the TweetQuotes function and specify the tweet number
-#     currseasonscorersscrape()
+    # Call scrape function
+    currseasonscorersscrape()
 
-#     # Once tweeted, wait 24 hours before doing anything else
-#     time.sleep(86400)
+    # 24 hour sleep timer
+    time.sleep(86400)
 
-#     # Add 1 to the counter prior to re-running the loop
-#     counter += 1
+    # Add 1 to the counter prior to re-running the loop
+    counter += 1
 
-
+    print(counter)

@@ -10,9 +10,8 @@ pymysql.install_as_MySQLdb()
 # Config Variables 
 from config import remote_db_endpoint, remote_db_port
 from config import remote_gwsis_dbname, remote_gwsis_dbuser, remote_gwsis_dbpwd
-from config import local_db_user, local_db_pwd, local_db_endpoint, local_db_port, local_db_name
 
-def currseasonscrape():
+def hrscrape():
     # Cloud MySQl database connection on AWS
     engine = create_engine(f"mysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{remote_db_endpoint}:{remote_db_port}/{remote_gwsis_dbname}")
 
@@ -58,7 +57,6 @@ def currseasonscrape():
     df_combine.reset_index(inplace=True, drop=True)
     df_combine['seasonid'] = df_combine.groupby('Player').cumcount() + 1   
     df_combine['Rk'] = df_combine.groupby('Season').cumcount() + 1 
-    df_combine = df_combine.fillna(0)
 
     #create final table
     df_combine.to_sql(name='hr_data', if_exists='replace', con=conn, chunksize=500, index=False)   
@@ -69,26 +67,24 @@ def currseasonscrape():
 
     return()
 
-currseasonscrape()
-
 #Set a timer for initial deployment
-# time.sleep(86400)
+time.sleep(86400)
 
 # Set timer to run every 24 hours...timer is in seconds
 
 # counter just to count how many days it's been running
-# counter = 0
+counter = 0
 
-# # Infinite loop
-# while(True):
+# Infinite loop
+while(True):
 
-#     # Call scrape function
-#     currseasonscrape()
+    # Call scrape function
+    hrscrape()
 
-#     # 24 hour sleep timer
-#     time.sleep(86400)
+    # 24 hour sleep timer
+    time.sleep(86400)
 
-#     # Add 1 to the counter prior to re-running the loop
-#     counter += 1
+    # Add 1 to the counter prior to re-running the loop
+    counter += 1
 
-#     print(counter)
+    print(counter)
