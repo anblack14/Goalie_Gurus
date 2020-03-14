@@ -42,12 +42,17 @@ def home():
 # Set up your default route
 @app.route('/api')
 def api():
-    return render_template('templates/api.html')
+    return render_template('api.html')
 
 # Set up your default route
 @app.route('/predictions')
 def predictions():
     return render_template('predictions.html')
+
+# Set up your default route
+@app.route('/model')
+def predictions():
+    return render_template('model.html')
 
 @app.route('/api/data/current_scorers_data')
 def getcurrent_scorers_data():
