@@ -1,8 +1,4 @@
 import pandas as pd
-
-import pymysql
-pymysql.install_as_MySQLdb()
-
 import MySQLdb
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
@@ -10,9 +6,6 @@ from sqlalchemy import create_engine
 import sqlalchemy
 from flask import Flask, request, render_template
 import os
-import gunicorn 
-
-
 
 # Heroku check
 is_heroku = False
@@ -63,6 +56,18 @@ def gethistoric_data():
     conn = engine.connect()
     try:
         data = pd.read_sql("SELECT * FROM hr_data ", conn)
+        return data.to_json(orient='records')
+    except Exception as e:
+        print(e)
+        return render_template('error.html', error=True)
+
+
+@app.route('/api/data/ovdb')
+def getOVDB():
+    # Establish DB connection
+    conn = engine.connect()
+    try:
+        data = pd.read_sql("SELECT * FROM ovdb ", conn)
         return data.to_json(orient='records')
     except Exception as e:
         print(e)
