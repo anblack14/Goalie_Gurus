@@ -11,8 +11,6 @@ import sqlalchemy
 from flask import Flask, request, render_template
 import os
 
-app = Flask(__name__)
-
 # Heroku check
 is_heroku = False
 if 'IS_HEROKU' in os.environ:
@@ -45,7 +43,7 @@ def home():
 # Set up your default route
 @app.route('/api')
 def api():
-    return render_template('api.html')
+    return render_template('templates/api.html')
 
 # Set up your default route
 @app.route('/predictions')
