@@ -55,14 +55,14 @@ def predictions():
 def goalmodel():
     return render_template('goalmodel.html')
 
-@app.route('/api/data/current_scorers_data')
+@app.route('/api/data/top_56_scorers')
 def getcurrent_scorers_data():
     # Establish DB connection
     conn = engine.connect()
     try:
         data = pd.read_sql("SELECT * FROM top56_scorers_GL_data ", conn)
         print("Connected")
-        return json.loads(data.to_json(orient='records'))
+        return data.to_json(orient='records')
     except Exception as e:
         print(e)
         return render_template('error.html', error=True)
