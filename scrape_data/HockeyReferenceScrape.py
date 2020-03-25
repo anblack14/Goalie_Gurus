@@ -67,8 +67,14 @@ def hrscrape():
 
     return()
 
-#Set a timer for initial deployment
-time.sleep(46920)
+runtime = "02:20:00"
+rt = datetime.strptime(runtime,"%H:%M:%S")
+
+sleeptime = (rt - datetime.strptime(datetime.now().strftime("%H:%M:%S"),"%H:%M:%S")).total_seconds()
+
+
+#Set a timer for initial deployment    
+time.sleep(abs(sleeptime))
 
 # Set timer to run every 24 hours...timer is in seconds
 

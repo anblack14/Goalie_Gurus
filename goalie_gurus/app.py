@@ -10,6 +10,7 @@ from sqlalchemy import create_engine
 import sqlalchemy
 from flask import Flask, request, render_template
 import os
+import json
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -61,7 +62,7 @@ def getcurrent_scorers_data():
     try:
         data = pd.read_sql("SELECT * FROM top56_scorers_GL_data ", conn)
         print("Connected")
-        return data.to_json(orient='records')
+        return json.loads(data.to_json(orient='records'))
     except Exception as e:
         print(e)
         return render_template('error.html', error=True)

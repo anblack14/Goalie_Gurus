@@ -188,10 +188,14 @@ def top56activeplayerscrape():
     print("---SCRAPE COMPLETE---")
     return()
 
-#Set a timer for initial deployment    
-time.sleep(48120)
+runtime = "02:40:00"
+rt = datetime.strptime(runtime,"%H:%M:%S")
 
-#    Set timer to run every 24 hours...timer is in seconds
+sleeptime = (rt - datetime.strptime(datetime.now().strftime("%H:%M:%S"),"%H:%M:%S")).total_seconds()
+
+
+#Set a timer for initial deployment    
+time.sleep(abs(sleeptime))
 
 #counter just to count how many days it's been running
 counter = 0
