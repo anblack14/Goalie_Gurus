@@ -21,7 +21,6 @@ def currseasonscorersscrape():
 
     #Get top 20 active scorers from hockey reference:
     currseason = 2020
-    seasonname = f'{currseason - 1}-{currseason}'
     url= f'https://www.hockey-reference.com/leaders/goals_active.html'
     currscorers = pd.read_html(url,header=1)
     time.sleep(5)
@@ -212,9 +211,14 @@ def currseasonscorersscrape():
 
 
 #Set a timer for initial deployment    
-time.sleep(45720)
+runtime = "02:00:00"
+rt = datetime.strptime(runtime,"%H:%M:%S")
 
-    # Set timer to run every 24 hours...timer is in seconds
+sleeptime = (rt - datetime.strptime(datetime.now().strftime("%H:%M:%S"),"%H:%M:%S")).total_seconds()
+
+time.sleep(abs(sleeptime))
+
+# Set timer to run every 24 hours...timer is in seconds
 
 # counter just to count how many days it's been running
 counter = 0

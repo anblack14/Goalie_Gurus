@@ -3,8 +3,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 import pandas as pd
 import os
-from datetime import date
-
+from datetime import date, datetime
+import time
 from sqlalchemy import create_engine
 
 import pymysql
@@ -96,9 +96,12 @@ def ov():
     conn.close()
 
 #Set a timer for initial deployment    
-time.sleep(49320)
+runtime = "03:00:00"
+rt = datetime.strptime(runtime,"%H:%M:%S")
 
-    # Set timer to run every 24 hours...timer is in seconds
+sleeptime = (rt - datetime.strptime(datetime.now().strftime("%H:%M:%S"),"%H:%M:%S")).total_seconds()
+
+time.sleep(abs(sleeptime))
 
 # counter just to count how many days it's been running
 counter = 0
@@ -116,4 +119,3 @@ while(True):
     counter += 1
 
     print(counter)
-
