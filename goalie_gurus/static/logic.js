@@ -2,7 +2,7 @@ console.log("Connected")
 
 //Initial chart placeholder
 
-var url = "/api/data/top_56_scorers_data"
+var url = "/api/data/current_scorers_data"
 d3.json(url).then(function (data) {
     //filling the dropdown menu
     var subjectFilter = d3.select("#selPlayer")
@@ -28,7 +28,7 @@ d3.json(url).then(function (data) {
         var id = selectedPlayer.attr("value");
         var name = selectedPlayer.text();
         console.log("Menu Change: ", id, name)
-        var url = "/api/data/top_56_scorers_data";
+        var url = "/api/data/current_scorers_data";
         d3.json(url).then(function (data) {
             console.log("Selection data connected")
 

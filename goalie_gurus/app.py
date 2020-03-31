@@ -10,7 +10,6 @@ from sqlalchemy import create_engine
 import sqlalchemy
 from flask import Flask, request, render_template
 import os
-import json
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -55,7 +54,7 @@ def predictions():
 def goalmodel():
     return render_template('goalmodel.html')
 
-@app.route('/api/data/top_56_scorers_data')
+@app.route('/api/data/current_scorers_data')
 def getcurrent_scorers_data():
     # Establish DB connection
     conn = engine.connect()
@@ -97,7 +96,7 @@ def getplayer_data():
     # Establish DB connection
     conn = engine.connect()
     try:
-        data = pd.read_sql("SELECT * FROM player_data", conn)
+        data = pd.read_sql("SELECT * FROM player_data ", conn)
         return data.to_json()
     except Exception as e:
         print(e)
